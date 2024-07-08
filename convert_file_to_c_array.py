@@ -2,7 +2,8 @@ import sys
 import os
 import argparse
 
-def convert_bin_to_c_array(file_path, output_path):
+
+def convert_file_to_c_array(file_path, output_path):
     try:
         with open(file_path, "rb") as file:
             data = file.read()
@@ -47,13 +48,13 @@ def convert_bin_to_c_array(file_path, output_path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Convert a binary file to a C-style array.")
-    parser.add_argument("file_path", help="Path to the binary file.")
+    parser = argparse.ArgumentParser(description="Convert a file to a C-style array.")
+    parser.add_argument("file_path", help="Path to the file.")
     parser.add_argument("-o", "--output", help="Output file to write the C array (prints to console if not specified).")
 
     args = parser.parse_args()
 
-    if not convert_bin_to_c_array(args.file_path, args.output):
+    if not convert_file_to_c_array(args.file_path, args.output):
         sys.exit(1)
 
     sys.exit(0)
