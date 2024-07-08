@@ -13,7 +13,7 @@ def convert_file_to_c_array(file_path, output_path):
 
     base_name = os.path.splitext(os.path.basename(file_path))[0]
 
-    output = [f"unsigned char {base_name}[{len(data)}] = {{\n"]
+    output = [f"const uint8_t {base_name}[{len(data)}] = {{\n"]
 
     for i in range(len(data)):
         if i % 8 == 0:
@@ -30,7 +30,7 @@ def convert_file_to_c_array(file_path, output_path):
             output.append(" ")
 
     output.append("};\n")
-    output.append(f"unsigned int {base_name}_len = {len(data)};")
+    output.append(f"const uint64_t {base_name}_len = {len(data)};")
 
     output_str = ''.join(output)
 
